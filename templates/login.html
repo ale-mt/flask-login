@@ -17,7 +17,7 @@
             <li class="nav-item"><a class="nav-link" href=" {{ url_for('logout') }}">Logout - {{ current_user.email }} | {{ current_user.roles }} </a></li>
                 {% else %}
 
-            <li class="nav-item active"><a class="nav-link" href=" {{ url_for('login') }}">Login</a></li>
+            <li class="nav-item active"><a class="nav-link" href=" {{ url_for('login1') }}">Login</a></li>
         {% endif %}
     </ul>
     {% endblock %}
