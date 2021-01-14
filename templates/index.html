@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+    {% block active_nav %}
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a class="nav-link" href=" {{ url_for('home') }}">Home</a>
+        </li>
+        {% if current_user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="#">Insert a Student</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href=" #">Register an account</a></li>
+            <li class="nav-item"><a class="nav-link" href=" #">Advanced management</a></li>
+        {% endif %}
+    </ul>
+    <ul class="navbar-nav navbar-right">
+        {% if current_user.is_authenticated %}
+            <li class="nav-item"><a class="nav-link" href=" {{ url_for('logout') }}">Logout - {{ current_user.email }} | {{ current_user.roles }} </a></li>
+                {% else %}
+
+            <li class="nav-item active"><a class="nav-link" href=" {{ url_for('login') }}">Login</a></li>
+        {% endif %}
+    </ul>
+    {% endblock %}
+
+{% block content %}
+    <h2 class="mt-4 border-bottom">Hello World! {{ current_user.email }} </h2>
+
+
+{% endblock %}
+

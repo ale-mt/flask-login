@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+    {% block active_nav %}
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a class="nav-link" href=" {{ url_for('home') }}">Home</a>
+        </li>
+        {% if current_user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="#">Insert a Student</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href=" #">Register an account</a></li>
+            <li class="nav-item"><a class="nav-link" href=" #">Advanced management</a></li>
+        {% endif %}
+    </ul>
+    <ul class="navbar-nav navbar-right">
+        {% if current_user.is_authenticated %}
+            <li class="nav-item"><a class="nav-link" href=" {{ url_for('logout') }}">Logout - {{ current_user.email }} | {{ current_user.roles }} </a></li>
+                {% else %}
+
+            <li class="nav-item active"><a class="nav-link" href=" {{ url_for('login') }}">Login</a></li>
+        {% endif %}
+    </ul>
+    {% endblock %}
+
+{% block content %}
+    <h2 class="mt-4 border-bottom">Log in your account</h2>
+
+
+    <form method="post" action="" class="mt-4 mb-4">
+         <div class="form-group">
+            <label for="emailinput">Email address</label>
+            <input type="email" class="form-control"  name='email' id="emailinput" placeholder="Enter email">
+        </div>
+        <div class="form-group">
+            <label for="emailinput">Password</label>
+            <input type="password" class="form-control" name='pswd' id="inputPassword" placeholder="Password">
+        </div>
+             <button type="submit" class="btn btn-primary mb-2">Sign in</button>
+    </form>
+
+{% endblock %}
+
