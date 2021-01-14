@@ -15,11 +15,12 @@ db = os.environ.get('MYSQL_DATABASE')
 app = Flask(__name__)
 app.config['DEBUG'] = True
 app.config['SECRET_KEY'] = 'super-secret'
+# app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://root:merlino@localhost:4000/flask_mysql'
 app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{user}:{psw}@{host}/{db}'
 app.config['SECURITY_PASSWORD_SALT'] = 'very secret salt'
 app.config['SECURITY_LOGIN_USER_TEMPLATE'] = 'login.html'
 login_manager = LoginManager(app)
-login_manager.login_view = 'login'
+login_manager.login_view = 'login1'
 login_manager.login_message_category = 'info'
 
 
@@ -55,8 +56,8 @@ class User(db.Model, UserMixin):
                             backref=db.backref('users', lazy='dynamic'))
 
 
-@app.route('/login', methods=['POST', 'GET'])
-def login():
+@app.route('/login1', methods=['POST', 'GET'])
+def login1():
     if request.method == "POST":
 
         print("richiesta di login POST")
