@@ -14,7 +14,6 @@ COPY . .
 
 RUN useradd appuser
 RUN chown -R appuser:appuser /usr/src/app
-RUN chmod -R 777 /usr/src/app/esercizio_studenti_flask/log
 
 USER appuser
 
